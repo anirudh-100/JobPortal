@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react"; // Use session to check if user is authenticated
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface JobSeekerData {
   name: string;
@@ -23,8 +24,9 @@ const JobSeekerDashboard = () => {
   const [recommendedJobs, setRecommendedJobs] = useState<JobRecommendation[]>([]);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-console.log("status", status);
-console.log("session", session);
+  
+  console.log("status", status);
+  console.log("session", session);
 
   // Redirect if user is not logged in
   useEffect(() => {
@@ -84,10 +86,12 @@ console.log("session", session);
     <div className="p-6 bg-gray-900 text-white min-h-screen">
       <h1 className="text-2xl font-bold">Welcome, {jobSeekerData.name}!</h1>
       {jobSeekerData.profilePicture && (
-        <img
+        <Image
           src={jobSeekerData.profilePicture}
           alt="Profile Picture"
-          className="w-24 h-24 rounded-full mt-4"
+          width={96} // Replace with your desired dimensions
+          height={96}
+          className="rounded-full mt-4"
         />
       )}
       <p className="mt-4">Email: {jobSeekerData.email}</p>
@@ -135,3 +139,6 @@ console.log("session", session);
 };
 
 export default JobSeekerDashboard;
+
+
+

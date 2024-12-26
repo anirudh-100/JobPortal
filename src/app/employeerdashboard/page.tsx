@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react"; // Use session to check if user is authenticated
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface EmployerData {
   name: string;
@@ -58,10 +59,12 @@ const EmployerDashboard = () => {
     <div className="p-6 bg-gray-900 text-white min-h-screen">
       <h1 className="text-2xl font-bold">Welcome, {employerData.name}!</h1>
       {employerData.profilePicture && (
-        <img
+        <Image
           src={employerData.profilePicture}
           alt="Profile Picture"
-          className="w-24 h-24 rounded-full mt-4"
+          width={96} // Replace with your desired dimensions
+          height={96}
+          className="rounded-full mt-4"
         />
       )}
       <p className="mt-4">Email: {employerData.email}</p>
@@ -93,3 +96,4 @@ const EmployerDashboard = () => {
 };
 
 export default EmployerDashboard;
+

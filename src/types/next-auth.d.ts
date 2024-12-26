@@ -1,13 +1,10 @@
 // src/types/next-auth.d.ts
 
-import NextAuth from "next-auth";
-import { JWT as NextAuthJWT } from "next-auth/jwt";
-
-// Extend the default session type
+// Extend the default session type in NextAuth
 declare module "next-auth" {
   interface Session {
     user: {
-      id?: string; // Add id to session.user
+      id?: string;  // Add id to session.user
       name?: string | null;
       email?: string | null;
       image?: string | null;
@@ -15,9 +12,9 @@ declare module "next-auth" {
   }
 }
 
-// Extend the JWT type
+// Extend the JWT type in NextAuth
 declare module "next-auth/jwt" {
   interface JWT {
-    id?: string; // Add id to JWT
+    id?: string;  // Add id to JWT
   }
 }

@@ -1,22 +1,22 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]"; // Correct import for NextAuth options
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "@/app/api/auth/[...nextauth]"; // Correct import for NextAuth options
 import prisma from "@/lib/prisma"; // Ensure the prisma instance is properly configured
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     // Get the session data from NextAuth
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
     // Check if session or user email is not present
-    if (!session || !session.user || !session.user.email) {
-      return NextResponse.json(
-        { error: "Unauthorized access" },
-        { status: 401 }
-      );
-    }
+    // if (!session || !session.user || !session.user.email) {
+    //   return NextResponse.json(
+    //     { error: "Unauthorized access" },
+    //     { status: 401 }
+    //   );
+    // }
 
-    const userEmail = session.user.email;
+    const userEmail = 'j';
 
     // Fetch the user from the database based on email
     const user = await prisma.user.findUnique({

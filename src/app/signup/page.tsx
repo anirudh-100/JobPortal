@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaLock, FaImage, FaPhone } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Image from "next/image"; // Importing Image from Next.js
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -86,7 +87,7 @@ const SignUp = () => {
       // Redirect to the Employer Dashboard after successful sign-up
       router.push("/dashboardjobseeker"); // Navigate to the employer dashboard
 
-    } catch (error) {
+    } catch {
       setIsError(true);
       setMessage("Failed to connect to the server.");
     } finally {
@@ -192,10 +193,12 @@ const SignUp = () => {
           />
           {preview && (
             <div style={styles.previewContainer}>
-              <img
+              <Image
                 src={preview}
                 alt="Profile Preview"
                 style={styles.imagePreview}
+                width={100} // Set width
+                height={100} // Set height
               />
             </div>
           )}

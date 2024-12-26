@@ -7,7 +7,7 @@ import { Readable } from "stream";
 // Interface to define the Cloudinary upload response type
 interface CloudinaryUploadResponse {
   secure_url: string;
-  [key: string]: any; // Allows for additional properties from Cloudinary
+  [key: string]: unknown; // Use 'unknown' instead of 'any'
 }
 
 // Function to convert Web Streams to Node.js Readable Streams
@@ -99,8 +99,8 @@ export async function POST(req: Request) {
       }
     }
 
-    // Create the new user
-    const newUser = await prisma.user.create({
+    // Create the new user without assigning to `newUser`
+    await prisma.user.create({
       data: {
         name,
         email,
